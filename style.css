@@ -1,0 +1,283 @@
+/* Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* Navbar */
+header {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #00bfff;
+}
+
+/* Sections */
+section {
+    padding: 80px 20px;
+    width: 90%;
+    margin: auto;
+}
+
+/* Home Section */
+/* Hero Section with Animated Gradient Background */
+/* Particle container */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+.home-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* semi-transparent overlay */
+    z-index: 0;
+}
+.hero-content {
+    position: relative;
+    z-index: 2; /* ensures content is above overlay */
+}
+/* Particle style */
+.particle {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatUp linear infinite, twinkle 2s infinite alternate;
+}
+
+/* Twinkling effect */
+@keyframes twinkle {
+    from { opacity: 0.2; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1.2); }
+}
+
+.home-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #00bfff, #031948bd, #00ff7f, #e1e1e1);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #fff;
+}
+
+
+
+
+
+
+/* Gradient animation */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* Hero Content Animation */
+.hero-inner {
+    position: fixed; /* Keep it visible while scrolling */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.8s ease;
+    display: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 2; /* above particles */
+}
+
+.hero-inner.shrink {
+    top: 80px;        /* move to top */
+    left: 100%;        /* move to right side */
+    transform: translate(-100%, 0); /* align right */
+}
+
+
+/* Animate profile picture, name, and tagline separately */
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    object-fit: cover;
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeSlideIn 1s forwards;
+    animation-delay: 0.3s;
+}
+.hero-inner.shrink .profile-pic {
+    width: 80px;      /* smaller size */
+    height: 80px;
+    border: 2px solid #fff;
+}
+
+.hero-text {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.hero-inner.shrink .hero-text {
+    opacity: 0;       /* hide text on shrink */
+}
+.hero-name {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeSlideIn 1s forwards;
+    animation-delay: 0.6s;
+}
+
+.hero-tagline {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlideIn 1s forwards;
+    animation-delay: 0.9s;
+}
+.hero-inner.shrink .hero-name,
+.hero-inner.shrink .hero-tagline {
+    display: none; /* hide text when shrunk */
+}
+/* Hover effect on profile picture */
+.profile-pic:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 191, 255, 0.6);
+}
+
+/* Keyframes for fade & slide-in */
+@keyframes fadeSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Skills */
+.skills-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.skill-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1 1 200px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Projects & Services */
+.project-card, .service-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Contact Form */
+.contact-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+}
+
+.contact-section input, .contact-section textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.contact-section button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #00bfff;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-section button:hover {
+    background: #0077aa;
+}
+
+/* Footer */
+footer {
+    background: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
